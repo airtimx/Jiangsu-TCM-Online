@@ -22,6 +22,14 @@ docker compose up -d
 
 默认端口 **8081**。前端通过 `http://127.0.0.1:8081` 调用 API（见仓库根 `docs/START.md`）。
 
+### 模块 01 管理端登录（Flyway 预置）
+
+| 项 | 值 |
+|---|---|
+| 账号 | `admin` |
+| 密码 | `admin123456` |
+| 登录 API | `POST /api/admin/v1/auth/login` |
+
 ## 数据库连接失败（Access denied for user 'tcm'）
 
 **原因**：本机 3306 上的 MySQL 没有 `tcm` 用户（常见于未用 Docker、或用的是本地安装的 MySQL）。

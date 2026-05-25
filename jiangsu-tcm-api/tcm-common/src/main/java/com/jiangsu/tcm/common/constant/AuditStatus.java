@@ -8,5 +8,6 @@ public enum AuditStatus {
     DRAFT,
     PENDING,
     APPROVED,
-    REJECTED
+    REJECTED,
+    PUBLISHED
 }

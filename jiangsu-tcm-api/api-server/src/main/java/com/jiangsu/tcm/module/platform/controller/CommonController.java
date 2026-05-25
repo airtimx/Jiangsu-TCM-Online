@@ -1,6 +1,7 @@
 package com.jiangsu.tcm.module.platform.controller;
 
 import com.jiangsu.tcm.common.constant.AuditStatus;
+import com.jiangsu.tcm.common.constant.CertStatus;
 import com.jiangsu.tcm.common.result.Result;
 import com.jiangsu.tcm.module.platform.dto.EnumItemVo;
 import com.jiangsu.tcm.module.platform.dto.PresignRequest;
@@ -45,6 +46,11 @@ public class CommonController {
         data.put(
                 "auditStatus",
                 Arrays.stream(AuditStatus.values())
+                        .map(status -> new EnumItemVo(status.name(), status.name()))
+                        .collect(Collectors.toList()));
+        data.put(
+                "certStatus",
+                Arrays.stream(CertStatus.values())
                         .map(status -> new EnumItemVo(status.name(), status.name()))
                         .collect(Collectors.toList()));
         return Result.ok(data);

@@ -1,24 +1,53 @@
 <template>
-	<view>
-		<image class="logo" src="/static/logo.png"></image>
-		<text class="title">{{title}}</text>
+	<view class="page">
+		<text class="title">江苏中医在线</text>
+		<text class="status">{{ statusText }}</text>
+		<button type="primary" @click="goLogin">微信登录</button>
+		<button @click="goCertify">学员认证</button>
+		<button @click="checkProfile">刷新资料</button>
 	</view>
 </template>
 
 <script setup lang="uts">
-	const title = ref('Hello')
+import { getToken, request } from '../../common/request.uts'
+
+const statusText = ref('未登录')
+
+function goLogin() {
+	uni.navigateTo({ url: '/pages/login/login' })
+}
+
+function goCertify() {
+	if (!getToken()) {
+		uni.showToast({ title: '请先登录', icon: 'none' })
+		return
+	}
+	uni.navigateTo({ url: '/pages/certify/certify' })
+}
+
+async function checkProfile() {
+	if (!getToken()) {
+		statusText.value = '未登录'
+		return
+	}
+	try {
+		const profile = await request<UTSJSONObject>({ url: '/api/app/v1/user/profile' })
+		const student = profile['student'] as UTSJSONObject | null
+		const cert = student != null ? (student['certStatus'] as string) : '无学员档案'
+		statusText.value = `${profile['nickname']} / ${cert}`
+	} catch (e) {
+		statusText.value = '请求失败'
+	}
+}
+
+onShow(() => {
+	checkProfile()
+})
 </script>
 
 <style>
-	.logo {
-		height: 100px;
-		width: 100px;
-		margin: 100px auto 25px auto;
-	}
-
-	.title {
-		font-size: 18px;
-		color: #8f8f94;
-		text-align: center;
-	}
+.page { padding: 40px 24px; }
+.title { display: block; font-size: 20px; font-weight: 600; margin-bottom: 16px; }
+.status { display: block; color: #606266; margin-bottom: 24px; }
+button { margin-bottom: 12px; }
 </style>

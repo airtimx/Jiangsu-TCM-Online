@@ -1,78 +1,102 @@
 {
   "module": "tcm-online-platform",
   "title": "江苏中医在线平台",
-  "updatedAt": "2026-05-22T12:00:00+08:00",
+  "updatedAt": "2026-05-25T23:45:00+08:00",
+  "repositoryRoot": "D:/JiangsuTCMOnline",
   "teamSize": 7,
   "teamAssignment": "codestatrFirst/specs/tcm-online-platform/team-assignment.md",
   "cancelledModules": [],
+  "engineering": {
+    "api": "jiangsu-tcm-api",
+    "admin": "admin-web",
+    "web": "jiangsu-tcm-web",
+    "miniapp": "Jiangsu-tcm-uniapp",
+    "database": "database/mysql",
+    "startDoc": "docs/START.md",
+    "apiPort": 8081,
+    "adminDevPort": 5173,
+    "webDevPort": 3000,
+    "defaultAdmin": { "username": "admin", "password": "admin123456" },
+    "wxMode": "mock",
+    "smsMockCode": "123456"
+  },
   "members": [
     {
       "id": "P1",
-      "name": "待填写",
+      "name": "蒋玉泽",
       "modules": ["00-platform-foundation", "01-auth-rbac", "07-learning-tracker", "14-data-analytics"],
       "role": "平台/后端架构"
     },
     {
       "id": "P2",
-      "name": "待填写",
+      "name": "沈宇",
       "modules": ["00-admin-shell", "01-auth-rbac-admin", "15-admin-dashboard", "14-charts"],
       "role": "管理端前端"
     },
     {
       "id": "P3",
-      "name": "待填写",
+      "name": "江嵩岭",
       "modules": ["00-miniapp-shell", "02-user-student", "17-user-center"],
       "role": "小程序/用户体系"
     },
     {
       "id": "P4",
-      "name": "待填写",
+      "name": "张美润",
       "modules": ["03-home-info", "08-topic-bundle", "16-official-web"],
       "role": "内容门户/官网"
     },
     {
       "id": "P5",
-      "name": "待填写",
+      "name": "王健",
       "modules": ["04-course-video", "13-live-streaming"],
       "role": "视频与直播"
     },
     {
       "id": "P6",
-      "name": "待填写",
+      "name": "蔡云霄",
       "modules": ["05-book-ebook", "11-knowledge-base"],
       "role": "图书与知识库"
     },
     {
       "id": "P7",
-      "name": "待填写",
+      "name": "方玉枫",
       "modules": ["06-podcast-audio", "09-question-exam", "10-expert-qa", "12-feedback"],
       "role": "音频/测评/运营"
     }
   ],
   "subModules": [
-    { "id": "00-platform-foundation", "owner": "P1+P2+P3", "wave": "W0" },
-    { "id": "01-auth-rbac", "owner": "P1+P2", "wave": "W1" },
-    { "id": "02-user-student", "owner": "P3", "wave": "W1" },
-    { "id": "03-home-info", "owner": "P4", "wave": "W2" },
-    { "id": "04-course-video", "owner": "P5", "wave": "W2" },
-    { "id": "05-book-ebook", "owner": "P6", "wave": "W2" },
-    { "id": "06-podcast-audio", "owner": "P7", "wave": "W2" },
-    { "id": "07-learning-tracker", "owner": "P1", "wave": "W2" },
-    { "id": "08-topic-bundle", "owner": "P4", "wave": "W3" },
-    { "id": "09-question-exam", "owner": "P7", "wave": "W2-W3" },
-    { "id": "10-expert-qa", "owner": "P7", "wave": "W3" },
-    { "id": "11-knowledge-base", "owner": "P6", "wave": "W3" },
-    { "id": "12-feedback", "owner": "P7", "wave": "W3" },
-    { "id": "13-live-streaming", "owner": "P5", "wave": "W3" },
-    { "id": "14-data-analytics", "owner": "P1+P2", "wave": "W4" },
-    { "id": "15-admin-dashboard", "owner": "P2", "wave": "W4" },
-    { "id": "16-official-web", "owner": "P4", "wave": "W3-W4" },
-    { "id": "17-user-center", "owner": "P3", "wave": "W2-W3" }
+    { "id": "00-platform-foundation", "owner": "P1+P2+P3+P4", "wave": "W0", "status": "code_done", "note": "Done 定义：合并 develop 待完成" },
+    { "id": "01-auth-rbac", "owner": "P1+P2", "wave": "W1", "status": "code_done", "note": "联调检查点待本机验证" },
+    { "id": "02-user-student", "owner": "P3", "wave": "W1", "status": "code_done", "note": "BE/AD/MP 由蒋玉泽代写；联调待验证" },
+    { "id": "03-home-info", "owner": "P4", "wave": "W2", "status": "pending" },
+    { "id": "04-course-video", "owner": "P5", "wave": "W2", "status": "pending" },
+    { "id": "05-book-ebook", "owner": "P6", "wave": "W2", "status": "pending" },
+    { "id": "06-podcast-audio", "owner": "P7", "wave": "W2", "status": "pending" },
+    { "id": "07-learning-tracker", "owner": "P1", "wave": "W2", "status": "pending" },
+    { "id": "08-topic-bundle", "owner": "P4", "wave": "W3", "status": "pending" },
+    { "id": "09-question-exam", "owner": "P7", "wave": "W2-W3", "status": "pending" },
+    { "id": "10-expert-qa", "owner": "P7", "wave": "W3", "status": "pending" },
+    { "id": "11-knowledge-base", "owner": "P6", "wave": "W3", "status": "pending" },
+    { "id": "12-feedback", "owner": "P7", "wave": "W3", "status": "pending" },
+    { "id": "13-live-streaming", "owner": "P5", "wave": "W3", "status": "pending" },
+    { "id": "14-data-analytics", "owner": "P1+P2", "wave": "W4", "status": "pending" },
+    { "id": "15-admin-dashboard", "owner": "P2", "wave": "W4", "status": "pending" },
+    { "id": "16-official-web", "owner": "P4", "wave": "W3-W4", "status": "pending" },
+    { "id": "17-user-center", "owner": "P3", "wave": "W2-W3", "status": "pending" }
   ],
+  "flyway": {
+    "V00100001": { "module": "00", "desc": "baseline_platform", "status": "applied" },
+    "V00100002": { "module": "00", "desc": "seed_sys_config", "status": "applied" },
+    "V00101001": { "module": "01", "desc": "auth_rbac_tables", "status": "applied" },
+    "V00101002": { "module": "01", "desc": "seed_auth_rbac", "status": "applied" },
+    "V00102001": { "module": "02", "desc": "user_student_tables", "status": "applied" },
+    "V00102002": { "module": "02", "desc": "seed_user_student_permissions", "status": "applied" }
+  },
   "docs": {
     "teamAssignment": "codestatrFirst/specs/tcm-online-platform/team-assignment.md",
     "parallelPlan": "codestatrFirst/specs/tcm-online-platform/parallel-plan.md",
     "index": "codestatrFirst/specs/tcm-online-platform/README.md",
-    "codingStandards": "江苏中医在线项目 - 代码编写规范文档.md"
+    "codingStandards": "江苏中医在线项目 - 代码编写规范文档.md",
+    "start": "docs/START.md"
   }
 }

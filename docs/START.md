@@ -40,6 +40,8 @@ cd jiangsu-tcm-api
 | http://127.0.0.1:8081/actuator/health | 健康检查 |
 | http://127.0.0.1:8081/docs | OpenAPI |
 | http://127.0.0.1:8081/api/common/v1/enums | 公共枚举 |
+| http://127.0.0.1:8081/api/admin/v1/auth/login | 管理端登录（admin / admin123456） |
+| http://127.0.0.1:8081/api/app/v1/auth/wx-login | 小程序 Mock 微信登录 |
 
 ---
 

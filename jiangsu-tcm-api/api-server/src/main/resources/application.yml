@@ -44,6 +44,17 @@ management:
       show-details: when_authorized
 
 tcm:
+  wx:
+    mode: ${WX_MODE:mock}
+    app-id: ${WX_APP_ID:}
+    app-secret: ${WX_APP_SECRET:}
+  sms:
+    mode: ${SMS_MODE:mock}
+    mock-code: ${SMS_MOCK_CODE:123456}
+  jwt:
+    secret: ${JWT_SECRET:jiangsu-tcm-online-dev-jwt-secret-key-32bytes-min}
+    access-token-minutes: ${JWT_ACCESS_MINUTES:120}
+    refresh-token-days: ${JWT_REFRESH_DAYS:7}
   oss:
     endpoint: ${OSS_ENDPOINT:http://127.0.0.1:9000}
     bucket: ${OSS_BUCKET:tcm-online}

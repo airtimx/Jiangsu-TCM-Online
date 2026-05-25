@@ -1,0 +1,65 @@
+<template>
+  <view class="page">
+    <input class="input" v-model="realName" placeholder="姓名" />
+    <input class="input" v-model="phone" placeholder="手机号" />
+    <view class="row">
+      <input class="input code" v-model="smsCode" placeholder="验证码" />
+      <button size="mini" @click="sendSms">发送验证码</button>
+    </view>
+    <input class="input" v-model="region" placeholder="地区" />
+    <input class="input" v-model="orgName" placeholder="所在单位" />
+    <button type="primary" @click="submit">提交认证</button>
+    <text class="hint">Mock 验证码：123456</text>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { request } from '../../common/request.uts'
+
+const realName = ref('')
+const phone = ref('')
+const smsCode = ref('')
+const region = ref('')
+const orgName = ref('')
+
+async function sendSms() {
+  if (!phone.value) {
+    uni.showToast({ title: '请先填写手机号', icon: 'none' })
+    return
+  }
+  await request<UTSJSONObject>({
+    url: '/api/app/v1/auth/sms/send',
+    method: 'POST',
+    data: { phone: phone.value } as UTSJSONObject,
+  })
+  uni.showToast({ title: '验证码已发送' })
+}
+
+async function submit() {
+  try {
+    await request<UTSJSONObject>({
+      url: '/api/app/v1/student/certify',
+      method: 'POST',
+      data: {
+        realName: realName.value,
+        phone: phone.value,
+        smsCode: smsCode.value,
+        region: region.value,
+        orgName: orgName.value,
+      } as UTSJSONObject,
+    })
+    uni.showToast({ title: '认证成功' })
+    uni.navigateBack()
+  } catch (e) {
+    uni.showToast({ title: '认证失败', icon: 'none' })
+  }
+}
+</script>
+
+<style>
+.page { padding: 24px; }
+.input { border: 1px solid #dcdfe6; border-radius: 4px; padding: 10px; margin-bottom: 12px; }
+.row { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; }
+.code { flex: 1; margin-bottom: 0; }
+.hint { display: block; margin-top: 12px; color: #909399; font-size: 13px; }
+</style>

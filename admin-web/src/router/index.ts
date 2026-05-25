@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import AdminLayout from '@/layouts/AdminLayout.vue';
+import { getToken, hasPermission } from '@/utils/auth';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -11,11 +12,46 @@ const router = createRouter({
       meta: { public: true },
     },
     {
+      path: '/403',
+      name: 'forbidden',
+      component: () => import('@/views/ForbiddenView.vue'),
+      meta: { public: true },
+    },
+    {
       path: '/',
       component: AdminLayout,
       children: [
         { path: '', name: 'home', component: () => import('@/views/HomeView.vue') },
-        { path: 'upload-demo', name: 'upload-demo', component: () => import('@/views/UploadDemoView.vue') },
+        {
+          path: 'upload-demo',
+          name: 'upload-demo',
+          component: () => import('@/views/UploadDemoView.vue'),
+          meta: { permission: 'system:upload:demo' },
+        },
+        {
+          path: 'account/users',
+          name: 'account-users',
+          component: () => import('@/views/account/UserListView.vue'),
+          meta: { permission: 'account:user:list' },
+        },
+        {
+          path: 'account/students',
+          name: 'account-students',
+          component: () => import('@/views/account/StudentListView.vue'),
+          meta: { permission: 'account:student:list' },
+        },
+        {
+          path: 'system/admins',
+          name: 'system-admins',
+          component: () => import('@/views/system/AdminListView.vue'),
+          meta: { permission: 'system:admin:list' },
+        },
+        {
+          path: 'system/roles',
+          name: 'system-roles',
+          component: () => import('@/views/system/RoleListView.vue'),
+          meta: { permission: 'system:role:list' },
+        },
       ],
     },
   ],
@@ -26,9 +62,13 @@ router.beforeEach((to, _from, next) => {
     next();
     return;
   }
-  const token = localStorage.getItem('tcm_admin_token');
-  if (!token && to.path !== '/login') {
+  if (!getToken()) {
     next('/login');
+    return;
+  }
+  const permission = to.meta.permission as string | undefined;
+  if (permission && !hasPermission(permission)) {
+    next('/403');
     return;
   }
   next();

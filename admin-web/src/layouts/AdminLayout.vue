@@ -3,14 +3,21 @@
     <el-aside width="220px" class="aside">
       <div class="logo">江苏中医在线</div>
       <el-menu router :default-active="route.path">
-        <el-menu-item index="/">基座首页</el-menu-item>
-        <el-menu-item index="/upload-demo">上传联调</el-menu-item>
+        <template v-for="item in menus" :key="item.path">
+          <el-sub-menu v-if="item.children?.length" :index="item.path">
+            <template #title>{{ item.title }}</template>
+            <el-menu-item v-for="child in item.children" :key="child.path" :index="child.path">
+              {{ child.title }}
+            </el-menu-item>
+          </el-sub-menu>
+          <el-menu-item v-else :index="item.path">{{ item.title }}</el-menu-item>
+        </template>
       </el-menu>
     </el-aside>
     <el-container>
       <el-header class="header">
-        <span>管理端（模块 00 壳）</span>
-        <el-button link type="primary" @click="logout">退出</el-button>
+        <span>{{ profile?.realName || profile?.username || '管理端' }}</span>
+        <el-button link type="primary" @click="onLogout">退出</el-button>
       </el-header>
       <el-main>
         <router-view />
@@ -20,14 +27,23 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { logoutApi } from '@/api/auth';
+import { clearSession, getMenus, getProfile } from '@/utils/auth';
 
 const route = useRoute();
 const router = useRouter();
+const menus = computed(() => getMenus());
+const profile = computed(() => getProfile());
 
-function logout() {
-  localStorage.removeItem('tcm_admin_token');
-  router.push('/login');
+async function onLogout() {
+  try {
+    await logoutApi();
+  } finally {
+    clearSession();
+    router.push('/login');
+  }
 }
 </script>
 
