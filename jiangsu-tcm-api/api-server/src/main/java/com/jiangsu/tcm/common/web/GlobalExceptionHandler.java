@@ -6,6 +6,8 @@ import com.jiangsu.tcm.common.result.Result;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authorization.AuthorizationDeniedException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -32,6 +34,13 @@ public class GlobalExceptionHandler {
         FieldError fieldError = ex.getBindingResult().getFieldError();
         String message = fieldError != null ? fieldError.getDefaultMessage() : "参数校验失败";
         return withTraceId(Result.fail(ErrorCode.PARAM_INVALID, message), request);
+    }
+
+    @ExceptionHandler({AccessDeniedException.class, AuthorizationDeniedException.class})
+    @ResponseStatus(HttpStatus.OK)
+    public Result<Void> handleAccessDenied(Exception ex, HttpServletRequest request) {
+        log.warn("access denied: {}", ex.getMessage());
+        return withTraceId(Result.fail(ErrorCode.FORBIDDEN, "无访问权限"), request);
     }
 
     @ExceptionHandler(Exception.class)

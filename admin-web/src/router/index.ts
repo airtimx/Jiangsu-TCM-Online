@@ -22,6 +22,8 @@ const router = createRouter({
       component: AdminLayout,
       children: [
         { path: '', name: 'home', component: () => import('@/views/HomeView.vue') },
+        { path: 'account', redirect: '/account/users' },
+        { path: 'system', redirect: '/system/admins' },
         {
           path: 'upload-demo',
           name: 'upload-demo',

@@ -4,7 +4,7 @@
       <div class="logo">江苏中医在线</div>
       <el-menu router :default-active="route.path">
         <template v-for="item in menus" :key="item.path">
-          <el-sub-menu v-if="item.children?.length" :index="item.path">
+          <el-sub-menu v-if="item.children?.length" :index="menuGroupIndex(item.path)">
             <template #title>{{ item.title }}</template>
             <el-menu-item v-for="child in item.children" :key="child.path" :index="child.path">
               {{ child.title }}
@@ -35,6 +35,11 @@ import { clearSession, getMenus, getProfile } from '@/utils/auth';
 const route = useRoute();
 const router = useRouter();
 const menus = computed(() => getMenus());
+
+/** 分组菜单 index 不参与路由，避免 /system、/account 等父路径 404 */
+function menuGroupIndex(path: string) {
+  return `group:${path}`;
+}
 const profile = computed(() => getProfile());
 
 async function onLogout() {
