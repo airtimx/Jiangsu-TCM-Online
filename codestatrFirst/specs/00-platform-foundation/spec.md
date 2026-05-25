@@ -5,7 +5,7 @@
 | 波次 | W0（第 1 周） |
 | 前置依赖 | 无 |
 | 阻塞 | 全部模块 |
-| Flyway | V000–V009 |
+| Flyway | 00100–00109（`V00100001` 起） |
 | 端 | BE + Admin + 小程序 + 官网壳 |
 
 ## Background
@@ -31,9 +31,9 @@
 
 ## Acceptance Criteria
 
-- [ ] `docker compose up` 后 API `/actuator/health` 返回 UP
-- [ ] 四端（含官网壳）本地均可启动，环境变量文档齐全
-- [ ] 统一响应 `{ code, message, data, traceId }` 被集成测试覆盖
-- [ ] OSS 预签名上传 Demo 可用
-- [ ] Flyway V000 基线迁移可重复执行
+- [x] `docker compose up` 后 API `/actuator/health` 返回 UP
+- [x] 四端（含官网壳）本地均可启动，环境变量文档齐全（`docs/START.md`）
+- [x] 统一响应 `{ code, message, data, traceId }` 被集成测试覆盖
+- [x] OSS 预签名上传 Demo 可用（`admin-web` 上传联调）
+- [x] Flyway V00100001 基线迁移可重复执行
 - [ ] develop 分支保护 + PR 模板就绪

@@ -1,0 +1,15 @@
+# 前端
+node_modules/
+dist/
+.nuxt/
+.output/
+.env.local
+
+# 后端
+**/target/
+.idea/
+*.iml
+
+# 本地密钥（勿提交）
+**/application-local.yml
+**/.env.local

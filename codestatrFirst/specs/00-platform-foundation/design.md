@@ -3,13 +3,12 @@
 ## 仓库结构
 
 ```
-tcm-online/
-├── api-server/          # Spring Boot 3
-├── admin-web/           # Vue3 + Vite + Element Plus
-├── miniapp/             # uni-app
-├── official-web/        # Nuxt 3（16-official-web）
-├── docker-compose.yml
-└── docs/openapi/
+JiangsuTCMOnline/              # 同一 Git，前后端分离多工程
+├── jiangsu-tcm-api/           # 后端：api-server + tcm-common + docker-compose
+├── admin-web/                 # 管理端 Vue3（独立 npm 工程）
+├── miniapp/                   # 小程序 uni-app
+├── jiangsu-tcm-web/           # 网页端 Nuxt 3（独立 npm）
+└── docs/START.md              # 四端启动（环境变量直连 API）
 ```
 
 ## 统一响应

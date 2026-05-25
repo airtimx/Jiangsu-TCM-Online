@@ -1,0 +1,39 @@
+openapi: 3.0.3
+info:
+  title: 江苏中医在线 API
+  version: 1.0.0
+  description: 一期 REST API（模块 00 公共接口）
+servers:
+  - url: http://localhost:8081
+paths:
+  /api/common/v1/upload/presign:
+    post:
+      summary: OSS 预签名上传
+      tags: [公共接口]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [module, fileName]
+              properties:
+                module:
+                  type: string
+                  example: course
+                fileName:
+                  type: string
+                  example: demo.pdf
+                contentType:
+                  type: string
+                  example: application/pdf
+      responses:
+        '200':
+          description: 统一响应
+  /api/common/v1/enums:
+    get:
+      summary: 公共枚举
+      tags: [公共接口]
+      responses:
+        '200':
+          description: 统一响应

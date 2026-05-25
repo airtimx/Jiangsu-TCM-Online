@@ -1,0 +1,21 @@
+{
+  "name": "jiangsu-tcm-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "dev:reset": "powershell -ExecutionPolicy Bypass -File ./scripts/dev-reset.ps1",
+    "build": "nuxt build",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "nuxt": "^3.16.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "typescript": "~5.7.2"
+  }
+}
