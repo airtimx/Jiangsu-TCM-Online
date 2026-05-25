@@ -1,0 +1,78 @@
+{
+  "module": "tcm-online-platform",
+  "title": "江苏中医在线平台",
+  "updatedAt": "2026-05-22T12:00:00+08:00",
+  "teamSize": 7,
+  "teamAssignment": "codestatrFirst/specs/tcm-online-platform/team-assignment.md",
+  "cancelledModules": [],
+  "members": [
+    {
+      "id": "P1",
+      "name": "待填写",
+      "modules": ["00-platform-foundation", "01-auth-rbac", "07-learning-tracker", "14-data-analytics"],
+      "role": "平台/后端架构"
+    },
+    {
+      "id": "P2",
+      "name": "待填写",
+      "modules": ["00-admin-shell", "01-auth-rbac-admin", "15-admin-dashboard", "14-charts"],
+      "role": "管理端前端"
+    },
+    {
+      "id": "P3",
+      "name": "待填写",
+      "modules": ["00-miniapp-shell", "02-user-student", "17-user-center"],
+      "role": "小程序/用户体系"
+    },
+    {
+      "id": "P4",
+      "name": "待填写",
+      "modules": ["03-home-info", "08-topic-bundle", "16-official-web"],
+      "role": "内容门户/官网"
+    },
+    {
+      "id": "P5",
+      "name": "待填写",
+      "modules": ["04-course-video", "13-live-streaming"],
+      "role": "视频与直播"
+    },
+    {
+      "id": "P6",
+      "name": "待填写",
+      "modules": ["05-book-ebook", "11-knowledge-base"],
+      "role": "图书与知识库"
+    },
+    {
+      "id": "P7",
+      "name": "待填写",
+      "modules": ["06-podcast-audio", "09-question-exam", "10-expert-qa", "12-feedback"],
+      "role": "音频/测评/运营"
+    }
+  ],
+  "subModules": [
+    { "id": "00-platform-foundation", "owner": "P1+P2+P3", "wave": "W0" },
+    { "id": "01-auth-rbac", "owner": "P1+P2", "wave": "W1" },
+    { "id": "02-user-student", "owner": "P3", "wave": "W1" },
+    { "id": "03-home-info", "owner": "P4", "wave": "W2" },
+    { "id": "04-course-video", "owner": "P5", "wave": "W2" },
+    { "id": "05-book-ebook", "owner": "P6", "wave": "W2" },
+    { "id": "06-podcast-audio", "owner": "P7", "wave": "W2" },
+    { "id": "07-learning-tracker", "owner": "P1", "wave": "W2" },
+    { "id": "08-topic-bundle", "owner": "P4", "wave": "W3" },
+    { "id": "09-question-exam", "owner": "P7", "wave": "W2-W3" },
+    { "id": "10-expert-qa", "owner": "P7", "wave": "W3" },
+    { "id": "11-knowledge-base", "owner": "P6", "wave": "W3" },
+    { "id": "12-feedback", "owner": "P7", "wave": "W3" },
+    { "id": "13-live-streaming", "owner": "P5", "wave": "W3" },
+    { "id": "14-data-analytics", "owner": "P1+P2", "wave": "W4" },
+    { "id": "15-admin-dashboard", "owner": "P2", "wave": "W4" },
+    { "id": "16-official-web", "owner": "P4", "wave": "W3-W4" },
+    { "id": "17-user-center", "owner": "P3", "wave": "W2-W3" }
+  ],
+  "docs": {
+    "teamAssignment": "codestatrFirst/specs/tcm-online-platform/team-assignment.md",
+    "parallelPlan": "codestatrFirst/specs/tcm-online-platform/parallel-plan.md",
+    "index": "codestatrFirst/specs/tcm-online-platform/README.md",
+    "codingStandards": "江苏中医在线项目 - 代码编写规范文档.md"
+  }
+}
